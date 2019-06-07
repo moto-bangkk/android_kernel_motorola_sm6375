@@ -2747,7 +2747,7 @@ try_to_wake_up(struct task_struct *p, unsigned int state, int wake_flags,
 		 *    it disabling IRQs (this allows not taking ->pi_lock).
 		 */
 		if (!(p->state & state))
-			goto out;
+			return false;
 
 		success = 1;
 		cpu = task_cpu(p);
@@ -2875,7 +2875,6 @@ out:
 
 	if (success)
 		ttwu_stat(p, cpu, wake_flags);
-	preempt_enable();
 
 	return success;
 }
