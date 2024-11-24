@@ -1140,7 +1140,6 @@ static inline void uclamp_rq_reinc_id(struct rq *rq, struct task_struct *p,
 {
 	if (!p->uclamp[clamp_id].active)
 		return;
-
 	uclamp_rq_dec_id(rq, p, clamp_id);
 	uclamp_rq_inc_id(rq, p, clamp_id);
 
